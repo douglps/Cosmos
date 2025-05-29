@@ -2,11 +2,14 @@ import Image from "next/image";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
 
 export function LogoSection() {
-  const acimaDe480 = useBreakpoint(480);
+  // const acimaDe480 = useBreakpoint(480);
   const acimaDe560 = useBreakpoint(560);
 
   return (
-    <div className="rounded-md p-2 flex items-center gap-2 min-w-[60px]" id="logo-container">
+    <div
+      className="rounded-md p-2 flex items-center gap-2 min-w-[60px]"
+      id="logo-container"
+    >
       <Image
         src="/logo1.png"
         alt="Logo do Cosmos"

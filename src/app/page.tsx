@@ -1,10 +1,7 @@
-import Image from "next/image";
-import { ThemeToggle } from "@/components/common/ThemeToggle";
+
 import { Meta } from "@/components/common/Meta";
-import { Section } from "@/components/common/Section";
 
 import { SliderFull } from "@/components/SliderFull";
-import { Button } from "@/components/Button";
 import { FeatureCard } from "@/components/FeaturedCard";
 
 export default function Home() {
