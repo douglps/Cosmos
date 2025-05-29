@@ -15,7 +15,6 @@ export function FeatureCard() {
             width={200}
             height={200}
             alt="Hamburguer com fritas sobre o prato"
-            layout="responsive"
             className="rounded-sm"
           />
         </div>
