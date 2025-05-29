@@ -29,7 +29,7 @@ border border-lime-950 min-w-fit"
           <div className="text-sm items-center font-semibold ">
             <p>
               <span className="font-sedgwick text-2xl text-red-800"> + </span>
-              Hamburguer de outro mundo
+              Hamburguer de outro mundo 
             </p>
             <p>
               <span className="font-sedgwick text-2xl text-red-800"> + </span>
