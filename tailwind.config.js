@@ -11,14 +11,17 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        nasa: ["var(--font-nasa)", 'sans-serif'],
         sedgwick: ["var(--font-sedgwick)", "cursive"],
         caveat: ["var(--font-caveat)", "cursive"],
         oswald: ["var(--font-oswald)", "sans-serif"],
         lexend: ["var(--font-lexend)", "sans-serif"],
+        bebas: ["var(--font-bebas)", "sans-serif"],
+
       },
-      screens: {
-      },
+      screens: {},
+
     },
+    plugins: [],
   },
-  plugins: [],
 };

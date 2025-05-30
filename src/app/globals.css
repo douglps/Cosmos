@@ -2,6 +2,13 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+@font-face {
+  font-family: "nasa";
+  src: url("/fonts/nasalization.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 @layer utilities {
   .font-sedgwick {
@@ -16,6 +23,31 @@
   .font-oswald {
     font-family: var(--font-oswald), Arial, Helvetica, sans-serif;
   }
+  .font-bebas {
+    font-family: var(--font-bebas), Arial, Helvetica, sans-serif;
+  }
+}
+
+@theme {
+  --animate-shakeAndScaleRotate: shakeAndScaleRotate 4s ease-in-out infinite;
+
+  @keyframes shakeAndScaleRotate {
+    0%   { transform: rotate(0deg) scale(1); }
+    10%  { transform: rotate(-5deg); }
+    20%  { transform: rotate(5deg); }
+    30%  { transform: rotate(-5deg); }
+    40%  { transform: rotate(5deg); }
+    50%  { transform: rotate(-3deg); }
+    60%  { transform: rotate(3deg); }
+    70%  { transform: rotate(-2deg); }
+    80%  { transform: rotate(2deg); }
+    90%  { transform: rotate(0deg); }
+    100% { transform: rotate(0deg) scale(1.05); }
+  }
+}
+
+:root {
+  --font-nasa: "nasa";
 }
 
 html {

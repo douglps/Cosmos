@@ -43,7 +43,7 @@ export function Header() {
   if (!mounted) return null;
 
   return (
-    <header className="flex items-center justify-between text-black p-2 bg-yellow-200 ring shadow-xl ring-gray-900/5 dark:bg-lime-950 dark:text-white relative">
+    <header className="flex items-center justify-between text-black p-2 bg-lime-100 ring shadow-xl ring-gray-900/5 dark:bg-lime-950 dark:text-white relative">
       <LogoSection />
       <nav className="hidden lg:block ml-2 mr-2">
         <NavLinks />

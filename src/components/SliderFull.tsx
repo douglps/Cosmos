@@ -71,7 +71,7 @@ export function SliderFull() {
   return (
     <Section>
       <div>
-        <p className="p-4 bg-yellow-200 dark:bg-stone-900 text-2xl text-shadow-sm text-shadow-lime-800 dark:text-shadow-lime-700 text-center transition-all duration-300 ease-in-out">
+        <p className="p-4 bg-lime-100 dark:bg-stone-900 text-2xl text-shadow-sm text-shadow-lime-800 dark:text-shadow-lime-700 text-center transition-all duration-300 ease-in-out">
           Confira as{" "}
           <span className="text-red-600 dark:text-yellow-300 text-3xl">
             ofertas
@@ -87,7 +87,7 @@ export function SliderFull() {
           ! 🌌
         </p>
 
-        <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px]">
+        <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] bg-stone-900">
           <Swiper
             onSwiper={(swiper) => (swiperRef.current = swiper)}
             modules={[EffectCreative, Autoplay, Pagination, Navigation]}
@@ -96,7 +96,7 @@ export function SliderFull() {
             pagination={{
               clickable: true,
               renderBullet: (_, className) => {
-                return `<span class="${className} text-white w-3 h-6 rounded-full bg-white opacity-50 inline-block mx-1 transition-all duration-300"></span>`;
+                return `<span class="${className} text-white w-3 h-6 bg-stone-900 opacity-50 inline-block mx-1 transition-all duration-300"></span>`;
               },
             }}
             parallax={true}
@@ -117,33 +117,41 @@ export function SliderFull() {
             }}
             className="w-full h-full"
           >
-            {slideLinks.map(({ image, href, title, description, cta }, index) => (
-              <SwiperSlide key={index}>
-                <Link href={href} className="relative block w-full h-full group">
-                  <Image
-                    src={image}
-                    alt={title}
-                    width={1920}
-                    height={1080}
-                    className="object-cover w-full h-full rounded-xl"
-                    priority={index === 0}
-                  />
+            {slideLinks.map(
+              ({ image, href, title, description, cta }, index) => (
+                <SwiperSlide key={index}>
+                  <Link
+                    href={href}
+                    className="relative block w-full h-full group"
+                  >
+                    <Image
+                      src={image}
+                      alt={title}
+                      width={1920}
+                      height={1080}
+                      className="object-cover w-full h-full"
+                      priority={index === 0}
+                    />
 
-                  {/* Overlay de Texto */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent p-6 flex flex-col justify-end rounded-xl transition-all duration-500 group-hover:backdrop-blur-[1px]">
-                    <h2 className="text-white text-2xl md:text-3xl font-bold mb-2">
-                      {title}
-                    </h2>
-                    <p className="text-white text-sm md:text-base mb-4">
-                      {description}
-                    </p>
-                    <span className="inline-block bg-white text-black px-4 py-2 rounded-full text-sm font-semibold w-fit hover:bg-gray-200 transition">
-                      {cta}
-                    </span>
-                  </div>
-                </Link>
-              </SwiperSlide>
-            ))}
+                    {/* Overlay de Texto */}
+                    <div className="absolute inset-0 p-4 flex flex-col justify-end transition-all duration-500 backdrop-blur-[1px]">
+                      <div className="bg-black/30 p-2 rounded-md w-fit max-w-full">
+                        <h2 className="text-white text-xl  font-bold mb-2">
+                          {title}
+                        </h2>
+                        <p className="text-white text-sm md:text-base mb-4">
+                          {description}
+                        </p>
+                      </div>
+
+                      <span className="inline-block mt-4 bg-white text-black  p-2 rounded-full text-sm font-semibold w-fit hover:bg-gray-200 transition">
+                        {cta}
+                      </span>
+                    </div>
+                  </Link>
+                </SwiperSlide>
+              )
+            )}
           </Swiper>
 
           {/* Botão Anterior */}

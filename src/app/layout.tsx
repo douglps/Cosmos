@@ -4,7 +4,9 @@ import {
   Sedgwick_Ave_Display,
   Oswald,
   Lexend,
+  Bebas_Neue,
 } from "next/font/google";
+import { nasaFont } from "./fonts";
 import "./globals.css";
 
 import { Providers } from "@/components/layout/Providers";
@@ -15,6 +17,13 @@ import { Footer } from "@/components/layout/Footer";
 
 const sedgwick = Sedgwick_Ave_Display({
   variable: "--font-sedgwick",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
+const bebas = Bebas_Neue({
+  variable: "--font-bebas",
   subsets: ["latin"],
   weight: "400",
   display: "swap",
@@ -71,7 +80,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${caveat.variable} ${sedgwick.variable} ${oswald.variable} ${lexend.variable} font-lexend antialiased bg-yellow-200 text-gray-900 dark:bg-zinc-800 dark:text-gray-100`}
+        className={`${caveat.variable} ${sedgwick.variable} ${oswald.variable} ${lexend.variable} ${bebas.variable} ${nasaFont.variable} font-lexend antialiased bg-lime-100 text-gray-900 dark:bg-zinc-800 dark:text-gray-100`}
       >
         <Providers>
           <Header />
