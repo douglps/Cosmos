@@ -7,7 +7,6 @@ import { BurgerButton } from "@/components/header/BurgerButton";
 import { LoginButton } from "@/components/header/LoginButton";
 import { BagButton } from "../header/BagButton";
 import { MobileMenu } from "@/components/header/MobileMenu";
-import { ThemeToggle } from "@/components/common/ThemeToggle";
 
 export function Header() {
   const [menuAberto, setMenuAberto] = useState(false);
@@ -43,7 +42,7 @@ export function Header() {
   if (!mounted) return null;
 
   return (
-    <header className="flex items-center justify-between text-black p-2 bg-lime-100 ring shadow-xl ring-gray-900/5 dark:bg-lime-950 dark:text-white relative">
+    <header className="flex items-center justify-between text-black p-2 bg-lime-100 ring shadow-xl ring-gray-900/5 dark:bg-lime-950 dark:text-white relative transition-all duration-500 ease-out">
       <LogoSection />
       <nav className="hidden lg:block ml-2 mr-2">
         <NavLinks />
@@ -62,7 +61,6 @@ export function Header() {
         <LoginButton />
       </div>
       <div className="hidden lg:flex items-center space-x-4">
-        <ThemeToggle />
       </div>
     </header>
   );

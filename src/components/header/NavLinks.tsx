@@ -7,7 +7,9 @@ interface NavLinksProps {
 
 export function NavLinks({ onClick, vertical = false }: NavLinksProps) {
   const baseClass = "font-oswald";
-  const itemClass = vertical ? "text-lg space-y-3" : "text-xl gap-4 flex flex-row flex-nowrap whitespace-nowrap";
+  const itemClass = vertical
+    ? "text-lg space-y-3"
+    : "text-xl gap-4 flex flex-row flex-nowrap whitespace-nowrap";
 
   return (
     <ul className={`${baseClass} ${itemClass} pl-5 pr-5`}>
@@ -19,7 +21,9 @@ export function NavLinks({ onClick, vertical = false }: NavLinksProps) {
         { label: "Localização", href: "/localizacao" },
       ].map(({ label, href }) => (
         <li key={href}>
-          <Link href={href} onClick={onClick}>{label}</Link>
+          <Link href={href} onClick={onClick}>
+            {label}
+          </Link>
         </li>
       ))}
     </ul>

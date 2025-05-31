@@ -1,35 +1,13 @@
-/* globals.css */
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
-@font-face {
-  font-family: "nasa";
-  src: url("/fonts/nasalization.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
 @layer utilities {
-  .font-sedgwick {
-    font-family: var(--font-sedgwick), Arial, Helvetica, sans-serif;
-  }
-  .font-caveat {
-    font-family: var(--font-caveat), Arial, Helvetica, sans-serif;
-  }
-  .font-lexend {
-    font-family: var(--font-lexend), Arial, Helvetica, sans-serif;
-  }
-  .font-oswald {
-    font-family: var(--font-oswald), Arial, Helvetica, sans-serif;
-  }
-  .font-bebas {
-    font-family: var(--font-bebas), Arial, Helvetica, sans-serif;
-  }
-}
-
-@theme {
-  --animate-shakeAndScaleRotate: shakeAndScaleRotate 4s ease-in-out infinite;
+  .font-sedgwick { font-family: var(--font-sedgwick), Arial, Helvetica, sans-serif; }
+  .font-caveat { font-family: var(--font-caveat), Arial, Helvetica, sans-serif; }
+  .font-lexend { font-family: var(--font-lexend), Arial, Helvetica, sans-serif; }
+  .font-oswald { font-family: var(--font-oswald), Arial, Helvetica, sans-serif; }
+  .font-bebas { font-family: var(--font-bebas), Arial, Helvetica, sans-serif; }
+  .font-nasa { font-family: var(--font-nasa), Arial, Helvetica, sans-serif; }
 
   @keyframes shakeAndScaleRotate {
     0%   { transform: rotate(0deg) scale(1); }
@@ -44,10 +22,11 @@
     90%  { transform: rotate(0deg); }
     100% { transform: rotate(0deg) scale(1.05); }
   }
-}
 
-:root {
-  --font-nasa: "nasa";
+  .animate-shakeAndScaleRotate {
+    animation: shakeAndScaleRotate 4s ease-in-out infinite;
+  }
+
 }
 
 html {

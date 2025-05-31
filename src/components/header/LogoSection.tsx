@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useBreakpoint } from "@/hooks/useBreakpoint";
+import Link from "next/link";
 
 export function LogoSection() {
   const acimaDe600 = useBreakpoint(600);
@@ -7,9 +8,9 @@ export function LogoSection() {
 
   return (
     <div
-      className="rounded-md p-2 flex items-center gap-2 min-w-[60px]"
+      className="rounded-md p-2 flexgap-2 min-w-[60px]"
       id="logo-container"
-    >
+    ><Link href="/" className="flex flex-row items-center gap-2">
       <Image
         src="/logo1.png"
         alt="Logo do Cosmos"
@@ -26,7 +27,7 @@ export function LogoSection() {
         <h2 className="text-center hidden min-[450px]:flex font-caveat text-black text-xl dark:text-white justify-center">
           {acimaDe560 ? "Hamburgueria artesanal" : "Burger"}
         </h2>
-      </div>
+      </div></Link>
     </div>
   );
 }

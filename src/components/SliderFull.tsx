@@ -71,17 +71,18 @@ export function SliderFull() {
   return (
     <Section>
       <div>
-        <p className="p-4 bg-lime-100 dark:bg-stone-900 text-2xl text-shadow-sm text-shadow-lime-800 dark:text-shadow-lime-700 text-center transition-all duration-300 ease-in-out">
+        <p className="p-4 bg-lime-100 dark:bg-stone-900 text-2xl text-shadow-sm text-shadow-stone-700  text-center transition-all duration-300 ease-in-out font-bebas tracking-widest
+">
           Confira as{" "}
-          <span className="text-red-600 dark:text-yellow-300 text-3xl">
+          <span className="text-red-600 dark:text-yellow-300 text-3xl font-nasa ml-2 mr-2">
             ofertas
           </span>{" "}
           mais{" "}
-          <span className="text-red-600 dark:text-yellow-300 text-3xl">
+          <span className="text-red-600 dark:text-yellow-300 text-3xl font-nasa ml-2 mr-2">
             incríveis
           </span>{" "}
           de todo o{" "}
-          <span className="text-red-600 dark:text-yellow-300 text-3xl">
+          <span className="text-red-600 dark:text-yellow-300 text-3xl font-nasa ml-2 mr-2">
             Cosmos
           </span>
           ! 🌌
