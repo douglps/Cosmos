@@ -10,6 +10,7 @@ import { nasaFont } from "./fonts";
 import "./globals.css";
 
 import { Providers } from "@/components/layout/Providers";
+import { DrawerCarrinhoWrapper } from "@/components/layout/DrawerCarrinhoWrapper";
 import { CarrinhoProvider } from "@/contexts/CarrinhoContext";
 
 import { Header } from "@/components/layout/Header";
@@ -90,6 +91,7 @@ export default function RootLayout({
             <Atividade />
             {children}
             <Footer />
+            <DrawerCarrinhoWrapper />
           </CarrinhoProvider>
         </Providers>
       </body>

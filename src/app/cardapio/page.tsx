@@ -12,8 +12,6 @@ import drinkIcon from "@/assets/images/utils/cokeIcon100.png";
 import cookieIcon from "@/assets/images/utils/cookieIcon100.png";
 
 import { SecaoCategoria } from "@/components/cardapio/SecaoCategoria";
-import { DrawerCarrinho } from "@/components/cardapio/DrawerCarrinho";
-import { useCarrinho } from "@/hooks/useCarrinho";
 import { produtos } from "@/data/produtos";
 
 const icon_size = 50;
@@ -36,13 +34,13 @@ const produtosFiltrados = produtos.filter(p =>
   p.nome.toLowerCase().includes(busca.toLowerCase())
 );
 
-const {
-  carrinhoAberto,
-  fecharCarrinho,
-  itens,
-  removerProduto,
-  limparCarrinho,
-} = useCarrinho();
+// const {
+//   carrinhoAberto,
+//   fecharCarrinho,
+//   itens,
+//   removerProduto,
+//   limparCarrinho,
+// } = useCarrinho();
 
 // const itensCarrinhoDrawer = itens.map((item) => ({
 //   id: item.produto.id,
@@ -93,15 +91,6 @@ const {
           produtos={produtosFiltrados}
         />
       </Section>
-
-      {/* Drawer do carrinho */}
-      <DrawerCarrinho
-  aberto={carrinhoAberto}
-  onClose={fecharCarrinho}
-  itens={itens}
-  onRemover={removerProduto}
-  onLimpar={limparCarrinho}
-/>
     </>
   );
 }

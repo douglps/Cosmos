@@ -1,5 +1,5 @@
-'use client';
-import { useState } from "react";
+"use client";
+import { useMemo, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { ScrollHint } from "./common/ScrollHint";
 
@@ -20,14 +20,22 @@ export function FeatureCard2({
   ctaText = "Ver mais",
   badgeLabel = "A partir de",
 }: FeatureCardProps) {
+  // Geração de delay e duração aleatórios, memorizados por instância
+  const animationStyles = useMemo(() => {
+    const delay = (Math.random() * 2).toFixed(2); // de 0s a 2s
+    const duration = (3 + Math.random() * 3).toFixed(2); // de 3s a 6s
+    return {
+      animationDelay: `${delay}s`,
+      animationDuration: `${duration}s`,
+    };
+  }, []);
+
   const [isOpen, setIsOpen] = useState(false);
-  const toggleOpen = () => setIsOpen(prev => !prev);
+  const toggleOpen = () => setIsOpen((prev) => !prev);
 
   return (
     <article className="flex flex-col items-center justify-center px-4 py-8 min-w-fit h-auto gap-5">
-      
       <div className="relative flex flex-col justify-center items-center min-h-fit w-full min-w-[300px] bg-white dark:bg-neutral-900 rounded-md shadow-md shadow-stone-700 overflow-hidden transition-transform duration-300 hover:scale-[1.05]">
-      
         {/* Cabeçalho */}
         <header className="w-full text-center bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-700 p-3">
           <h2 className="text-2xl font-bebas text-black bg-white/50 tracking-widest text-center">
@@ -47,8 +55,13 @@ export function FeatureCard2({
         </div>
         {/* Preço e CTA */}
         <div className="relative w-full px-4 py-4 flex items-center justify-between">
-          <span className="absolute right-21 top-2 text-xs text-neutral-600 dark:text-neutral-300">{badgeLabel}</span>
-          <div className="absolute -top-3 right-4 flex flex-col items-center justify-center bg-lime-500 text-black rounded-full w-16 h-16 shadow-md animate-bounce">
+          <span className="absolute right-21 top-2 text-xs text-neutral-600 dark:text-neutral-300">
+            {badgeLabel}
+          </span>
+          <div
+            className="absolute -top-3 right-4 flex flex-col items-center justify-center bg-lime-500 text-black rounded-full w-16 h-16 shadow-md animate-bounce"
+            style={animationStyles}
+          >
             <span className="text-[10px] font-light">R$</span>
             <span className="text-lg font-bold">{price}</span>
           </div>

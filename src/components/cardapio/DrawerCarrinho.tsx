@@ -29,15 +29,15 @@ export function DrawerCarrinho({
     <>
       {/* Fundo semi-transparente */}
       <div
-        className={`fixed inset-0 bg-black bg-opacity-40 transition-opacity ${
-          aberto ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 bg-black/70 backdrop-blur-md  transition-opacity z-10 ${
+          aberto ? "opacity-60 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         onClick={onClose}
       />
 
       {/* Drawer lateral */}
       <div
-        className={`fixed top-0 right-0 h-full w-80 bg-white dark:bg-gray-800 shadow-xl transform transition-transform ${
+        className={`fixed top-0 right-0 h-full w-80 z-50 bg-white dark:bg-gray-800 shadow-xl transform transition-transform ${
           aberto ? "translate-x-0" : "translate-x-full"
         } flex flex-col`}
       >
