@@ -1,11 +1,11 @@
 import { ItemCarrinho } from "@/types";
 
-interface ProdutoCarrinho {
-  id: string;
-  nome: string;
-  preco: number;
-  quantidade: number;
-}
+// interface ProdutoCarrinho {
+//   id: string;
+//   nome: string;
+//   preco: number;
+//   quantidade: number;
+// }
 
 interface DrawerCarrinhoProps {
   aberto: boolean;

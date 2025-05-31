@@ -44,12 +44,12 @@ const {
   limparCarrinho,
 } = useCarrinho();
 
-const itensCarrinhoDrawer = itens.map((item) => ({
-  id: item.produto.id,
-  nome: item.produto.nome,
-  preco: item.produto.preco,
-  quantidade: item.quantidade,
-}));
+// const itensCarrinhoDrawer = itens.map((item) => ({
+//   id: item.produto.id,
+//   nome: item.produto.nome,
+//   preco: item.produto.preco,
+//   quantidade: item.quantidade,
+// }));
 
   return (
     <>
