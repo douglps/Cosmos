@@ -1,3 +1,4 @@
+// /components/cardapio/CombosCard.tsx
 "use client";
 
 import { useEffect, useState, useRef } from "react";
@@ -21,6 +22,7 @@ export function CombosCard({
   const { adicionarProduto, adicionarItemPersonalizado, itens } = useCarrinho();
   const [isOpen, setIsOpen] = useState(false);
   const [isComboModalOpen, setComboModalOpen] = useState(false);
+
 
   // Calcula a quantidade do produto base (não personalizado) no carrinho
   const quantidadeNoCarrinhoBase =
@@ -60,25 +62,21 @@ export function CombosCard({
 
   // Função chamada pelo ComboModal ao confirmar a personalização
   const handleConfirmCombo = (selection: {
-    hamburguerId: string; // Renomeado para Id
-    acompanhamentoId: string; // Renomeado para Id
-    bebidaId: string; // Renomeado para Id
+    hamburguerId: string;
+    acompanhamentoId: string;
+    bebidaId: string;
+    sobremesaId?: string; // Adicionado para sobremesa opcional
+    quantidadeSobremesa?: number; // Adicionado para quantidade da sobremesa
+    precoFinal: number; // <-- IMPORTANTE: O preço final já vem do modal!
   }) => {
     // Busca os *nomes* reais dos produtos para exibição no carrinho
     const nomeHamburguer = allProducts.find(p => p.id === selection.hamburguerId)?.nome || selection.hamburguerId;
     const nomeAcompanhamento = allProducts.find(p => p.id === selection.acompanhamentoId)?.nome || selection.acompanhamentoId;
     const nomeBebida = allProducts.find(p => p.id === selection.bebidaId)?.nome || selection.bebidaId;
+    const nomeSobremesa = selection.sobremesaId ? allProducts.find(p => p.id === selection.sobremesaId)?.nome : undefined;
 
-    // Lógica para calcular o preço final do combo personalizado
-    // Você precisa ajustar esta lógica conforme seu modelo de negócios:
-    // Opção 1: Preço fixo do combo, as personalizações não alteram o preço.
-    // const precoFinalCalculado = produto.preco;
 
-    // Opção 2: O preço do combo é a soma dos preços dos itens selecionados.
-    const precoHamburguer = allProducts.find(p => p.id === selection.hamburguerId)?.preco || 0;
-    const precoAcompanhamento = allProducts.find(p => p.id === selection.acompanhamentoId)?.preco || 0;
-    const precoBebida = allProducts.find(p => p.id === selection.bebidaId)?.preco || 0;
-    const precoFinalCalculado = precoHamburguer + precoAcompanhamento + precoBebida;
+    const precoFinalDoComboPersonalizado = selection.precoFinal;
 
 
     // Chamar adicionarItemPersonalizado do CarrinhoContext
@@ -86,12 +84,13 @@ export function CombosCard({
       hamburguer: nomeHamburguer,
       acompanhamento: nomeAcompanhamento,
       bebida: nomeBebida,
-      precoFinal: precoFinalCalculado, // Preço final calculado
+      sobremesa: nomeSobremesa, // Passa o nome da sobremesa
+      quantidadeSobremesa: selection.quantidadeSobremesa, // Passa a quantidade da sobremesa
+      precoFinal: precoFinalDoComboPersonalizado, // <-- USANDO O PREÇO FINAL VINDO DO MODAL!
     });
 
     handleCloseComboModal(); // Fecha o modal após adicionar ao carrinho
   };
-
 
   return (
     <article className="flex flex-col items-center justify-center px-4 py-8 min-w-fit h-auto gap-5">
@@ -203,8 +202,12 @@ export function CombosCard({
           isOpen={isComboModalOpen}
           onClose={handleCloseComboModal}
           onConfirm={handleConfirmCombo}
-          hamburguerId={"burger_mercurio"} // ATENÇÃO: Defina o ID do hambúrguer base do combo aqui
-          basePrice={produto.preco} // Preço base do combo
+          // ATENÇÃO: Defina o ID do hambúrguer base do combo aqui.
+          // Pode ser um ID fixo para todos os combos ou vir do `produto.id`
+          // se o `produto` do card representar o hambúrguer principal do combo.
+          // Se o "Combo Espacial" sempre tiver o "Burger Mercúrio", então 'burger_mercurio' está certo.
+          hamburguerId={"burger_mercurio"} 
+          basePrice={produto.preco} // Preço base do combo, que é o ponto de partida do cálculo no modal
         />
       )}
     </article>

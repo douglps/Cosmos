@@ -103,9 +103,9 @@ export function DrawerCarrinho({
 
     {item.personalizado && (
       <ul className="text-xs text-gray-500 dark:text-gray-400 mt-1 list-disc list-inside">
-        <li>Hambúrguer: {item.personalizado.hamburguer}</li>
-        <li>Acompanhamento: {item.personalizado.acompanhamento}</li>
-        <li>Bebida: {item.personalizado.bebida}</li>
+        <li>{item.personalizado.hamburguer}</li>
+        <li>{item.personalizado.acompanhamento}</li>
+        <li>{item.personalizado.bebida}</li>
       </ul>
     )}
   </div>

@@ -13,6 +13,7 @@ interface ComboModalProps {
     bebidaId: string;
     sobremesaId?: string; // Agora a sobremesa é opcional
     quantidadeSobremesa?: number; // Quantidade para a sobremesa
+    precoFinal: number; // <--- ADICIONE ESTA LINHA AQUI!
   }) => void;
   hamburguerId: string; // ID do hambúrguer base do combo
   basePrice: number; // Preço base do combo
@@ -101,6 +102,7 @@ export const ComboModal: React.FC<ComboModalProps> = ({
         bebidaId: selectedBebidaId,
         sobremesaId: selectedSobremesaId || undefined,
         quantidadeSobremesa: quantidadeSobremesa > 0 ? quantidadeSobremesa : undefined,
+        precoFinal: totalPrice, // <--- GARANTA QUE ESTÁ PASSANDO O totalPrice AQUI!
       });
       onClose();
     } else {
