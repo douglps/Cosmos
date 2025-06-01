@@ -71,8 +71,11 @@ export function Atividade() {
   const [agora, setAgora] = useState(new Date());
   const [mostrarAviso, setMostrarAviso] = useState(false);
   const [tamanhoTela, setTamanhoTela] = useState<"grande" | "media" | "pequena">("grande");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+
     const atualizarAgora = () => setAgora(new Date());
     const atualizarTamanho = () => {
       const largura = window.innerWidth;
@@ -81,7 +84,7 @@ export function Atividade() {
       else setTamanhoTela("grande");
     };
 
-    atualizarTamanho(); // inicial
+    atualizarTamanho();
     const timer = setInterval(atualizarAgora, 1000);
     window.addEventListener("resize", atualizarTamanho);
 
@@ -96,6 +99,20 @@ export function Atividade() {
     const timeout = setTimeout(() => setMostrarAviso(false), 15000);
     return () => clearTimeout(timeout);
   }, []);
+
+  if (!mounted) {
+    // Placeholder para evitar mismatch no SSR
+    return (
+      <Section>
+        <div className="relative bg-stone-100 flex flex-row justify-between items-center gap-5 dark:bg-stone-800">
+          <div className="min-w-[40px]"><ThemeToggle /></div>
+          <div className="mr-3 p-2 text-right flex-grow">
+            <strong className="text-gray-500">Carregando horário...</strong>
+          </div>
+        </div>
+      </Section>
+    );
+  }
 
   const { diaSemana, dataFormatada } = formatarDataPorTamanho(tamanhoTela, agora);
   const horaFormatada = agora.toLocaleTimeString("pt-BR", {
@@ -118,7 +135,10 @@ export function Atividade() {
             } group-hover:block cursor-default`}
           >
             As atividades da loja foram encerradas — Site Demonstrativo ⚠️
-            <div className="absolute flex flex-row justify-between w-full pl-3 pr-1 top-0 right-0 text-md font-nasa"> <span className="font-oswald top-2 pt-1 text-red-800">IMPORTANTE!</span><span>X</span> </div>
+            <div className="absolute flex flex-row justify-between w-full pl-3 pr-1 top-0 right-0 text-md font-nasa">
+              <span className="font-oswald top-2 pt-1 text-red-800">IMPORTANTE!</span>
+              <span>X</span>
+            </div>
           </div>
         </div>
         <div className="min-w-[40px]"><ThemeToggle /></div>
