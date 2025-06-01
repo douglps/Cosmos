@@ -1,3 +1,5 @@
+// components/contexts/CarrinhoContexts.tsx
+
 "use client";
 
 import { createContext, useState, ReactNode } from "react";

@@ -113,11 +113,12 @@ export function Atividade() {
         >
           ⚠️
           <div
-            className={`absolute left-14 top-1/2 -translate-y-1/2 w-50 bg-pink-200 text-black dark:bg-yellow-300 rounded-md shadow-md shadow-stone-800 dark:shadow-stone-400 p-3 text-justify text-md z-50 transition-opacity duration-300 ${
+            className={`absolute left-14 top-1/2 pt-7 -translate-y-1/2 w-50 bg-yellow-200 text-black dark:bg-yellow-300 rounded-md shadow-md shadow-stone-800 dark:shadow-stone-400 p-3 text-justify text-md z-50 transition-opacity duration-300 ${
               mostrarAviso ? "opacity-100 block" : "opacity-0 hidden"
-            } group-hover:block`}
+            } group-hover:block cursor-default`}
           >
             As atividades da loja foram encerradas — Site Demonstrativo ⚠️
+            <div className="absolute flex flex-row justify-between w-full pl-3 pr-1 top-0 right-0 text-md font-nasa"> <span className="font-oswald top-2 pt-1 text-red-800">IMPORTANTE!</span><span>X</span> </div>
           </div>
         </div>
         <div className="min-w-[40px]"><ThemeToggle /></div>

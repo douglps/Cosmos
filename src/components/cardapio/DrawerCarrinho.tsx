@@ -1,11 +1,5 @@
+// components/DrawerCarrinho.tsx
 import { ItemCarrinho } from "@/types";
-
-// interface ProdutoCarrinho {
-//   id: string;
-//   nome: string;
-//   preco: number;
-//   quantidade: number;
-// }
 
 interface DrawerCarrinhoProps {
   aberto: boolean;
@@ -13,23 +7,28 @@ interface DrawerCarrinhoProps {
   itens: ItemCarrinho[];
   onRemover: (id: string) => void;
   onLimpar: () => void;
+  onAdicionar?: (id: string) => void;
+  onAlterarQuantidade: (id: string, quantidade: number) => void;
 }
 
 export function DrawerCarrinho({
   aberto,
   onClose,
-  itens=[],
+  itens = [],
   onRemover,
   onLimpar,
+  onAlterarQuantidade,
 }: DrawerCarrinhoProps) {
-  // Calcula total
-  const total = itens.reduce((acc, item) => acc + item.produto.preco * item.quantidade, 0);
+  const total = itens.reduce(
+    (acc, item) => acc + item.produto.preco * item.quantidade,
+    0
+  );
 
   return (
     <>
-      {/* Fundo semi-transparente */}
+      {/* Fundo */}
       <div
-        className={`fixed inset-0 bg-black/70 backdrop-blur-md  transition-opacity z-10 ${
+        className={`fixed inset-0 bg-black/70 backdrop-blur-md transition-opacity z-10 ${
           aberto ? "opacity-60 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         onClick={onClose}
@@ -62,31 +61,57 @@ export function DrawerCarrinho({
           )}
 
           {itens.map(({ produto, quantidade }) => (
-  <div
-    key={produto.id}
-    className="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-2"
-  >
-    <div>
-      <p className="font-semibold text-gray-900 dark:text-gray-100">{produto.nome}</p>
-      <p className="text-sm text-gray-600 dark:text-gray-400">
-        {quantidade} × R$ {produto.preco.toFixed(2)}
-      </p>
-    </div>
+            <div
+              key={produto.id}
+              className="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-2"
+            >
+              <div>
+                <p className="font-semibold text-gray-900 dark:text-gray-100">{produto.nome}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  R$ {produto.preco.toFixed(2)} cada
+                </p>
+              </div>
 
-    <div className="flex items-center gap-3">
-      <p className="font-semibold text-gray-900 dark:text-gray-100">
-        R$ {(produto.preco * quantidade).toFixed(2)}
-      </p>
-      <button
-        onClick={() => onRemover(produto.id)}
-        aria-label={`Remover ${produto.nome} do carrinho`}
-        className="text-red-600 hover:text-red-800 transition"
-      >
-        ✕
-      </button>
-    </div>
-  </div>
-))}
+              <div className="flex items-center gap-2">
+                {/* - */}
+                <button
+                  onClick={() => onAlterarQuantidade(produto.id, quantidade - 1)}
+                  className="px-2 py-1 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 rounded"
+                  aria-label={`Remover uma unidade de ${produto.nome}`}
+                >
+                  -
+                </button>
+
+                {/* quantidade */}
+                <span className="min-w-[24px] text-center font-medium text-gray-900 dark:text-gray-100">
+                  {quantidade}
+                </span>
+
+                {/* + */}
+                <button
+                  onClick={() => onAlterarQuantidade(produto.id, quantidade + 1)}
+                  className="px-2 py-1 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 rounded"
+                  aria-label={`Adicionar uma unidade de ${produto.nome}`}
+                >
+                  +
+                </button>
+
+                {/* subtotal */}
+                <span className="font-semibold text-gray-900 dark:text-gray-100 ml-2">
+                  R$ {(produto.preco * quantidade).toFixed(2)}
+                </span>
+
+                {/* excluir */}
+                <button
+                  onClick={() => onRemover(produto.id)}
+                  className="text-red-600 hover:text-red-800 ml-2"
+                  aria-label={`Remover completamente ${produto.nome} do carrinho`}
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Rodapé */}

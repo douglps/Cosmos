@@ -26,10 +26,10 @@ export function BagButton() {
       onKeyDown={e => e.key === "Enter" && toggleCarrinho()}
     >
       <Image src={bagIcon} alt="Abrir Carrinho" width={30} height={30} />
-      <p className="hidden min-[450px]:flex select-none">Carrinho</p>
+      <p className="hidden min-[500px]:flex select-none">Carrinho</p>
 
       {quantidadeTotal > 0 && (
-        <span className="absolute top-0 right-0 bg-amber-600 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">
+        <span className="absolute top-0 -right-2 min-[500px]:right-2 bg-red-700 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">
           {quantidadeTotal}
         </span>
       )}

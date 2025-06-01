@@ -18,7 +18,7 @@ export function BurgerButton({ onClick, buttonRef }: BurgerButtonProps) {
       aria-label="Abrir menu"
     >
       <Image src={burgerIcon} alt="Menu" width={30} height={30} priority fetchPriority="high" />
-      <p className="hidden min-[450px]:flex">Menu</p>
+      <p className="hidden min-[500px]:flex">Menu</p>
     </div>
   );
 }

@@ -19,7 +19,7 @@ export function LoginButton() {
       aria-label="Realizar Login"
     >
       <Image src={loginIcon} alt="Fazer Login" width={30} height={30} />
-      <p className="hidden min-[450px]:flex">Login</p>
+      <p className="hidden min-[500px]:flex">Login</p>
     </div>
   );
 }

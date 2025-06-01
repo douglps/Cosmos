@@ -1,3 +1,5 @@
+// components/layout/DrawerCarrinhoWrapper.tsx
+
 "use client";
 
 import { DrawerCarrinho } from "@/components/cardapio/DrawerCarrinho";
@@ -10,6 +12,8 @@ export function DrawerCarrinhoWrapper() {
     itens,
     removerProduto,
     limparCarrinho,
+    adicionarProduto,
+    alterarQuantidade,
   } = useCarrinho();
 
   return (
@@ -19,6 +23,11 @@ export function DrawerCarrinhoWrapper() {
       itens={itens}
       onRemover={removerProduto}
       onLimpar={limparCarrinho}
+      onAdicionar={(id) => {
+        const item = itens.find((item) => item.produto.id === id);
+        if (item) adicionarProduto(item.produto);
+      }}
+      onAlterarQuantidade={alterarQuantidade}
     />
   );
 }

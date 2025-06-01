@@ -1,3 +1,5 @@
+// components/cardapio/CardProdutos.tsx
+
 import { useCarrinho } from "@/hooks/useCarrinho"; // Contexto fictício
 import { Produto } from "@/types";
 

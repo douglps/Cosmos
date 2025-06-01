@@ -10,6 +10,15 @@ interface ScrollHintProps {
 export function ScrollHint({ inverted = false, onClick }: ScrollHintProps) {
   const [hovered, setHovered] = useState(false);
 
+  const handleClick = () => {
+    // Dispara clique externo
+    onClick?.();
+
+    // Ativa efeito de hover temporário para dispositivos mobile
+    setHovered(true);
+    setTimeout(() => setHovered(false), 1000); // tempo pode ser ajustado conforme o necessário
+  };
+
   return (
     <div
       className={`relative w-full flex justify-center items-center h-12 mt-2 pb-1 cursor-pointer ${
@@ -17,7 +26,7 @@ export function ScrollHint({ inverted = false, onClick }: ScrollHintProps) {
       }`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={onClick}
+      onClick={handleClick}
     >
       <div className="flex gap-1 items-center relative">
         <span

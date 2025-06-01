@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { ScrollHint } from "./common/ScrollHint";
 
@@ -21,13 +21,16 @@ export function FeatureCard2({
   badgeLabel = "A partir de",
 }: FeatureCardProps) {
   // Geração de delay e duração aleatórios, memorizados por instância
-  const animationStyles = useMemo(() => {
-    const delay = (Math.random() * 2).toFixed(2); // de 0s a 2s
-    const duration = (3 + Math.random() * 3).toFixed(2); // de 3s a 6s
-    return {
-      animationDelay: `${delay}s`,
-      animationDuration: `${duration}s`,
-    };
+  const [animationStyles, setAnimationStyles] =
+    useState<React.CSSProperties | null>(null);
+
+  useEffect(() => {
+    const delay = `${(Math.random() * 2).toFixed(2)}s`;
+    const duration = `${(3 + Math.random() * 3).toFixed(2)}s`;
+    setAnimationStyles({
+      animationDelay: delay,
+      animationDuration: duration,
+    });
   }, []);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -60,7 +63,7 @@ export function FeatureCard2({
           </span>
           <div
             className="absolute -top-3 right-4 flex flex-col items-center justify-center bg-lime-500 text-black rounded-full w-16 h-16 shadow-md animate-bounce"
-            style={animationStyles}
+            style={animationStyles ?? {}}
           >
             <span className="text-[10px] font-light">R$</span>
             <span className="text-lg font-bold">{price}</span>

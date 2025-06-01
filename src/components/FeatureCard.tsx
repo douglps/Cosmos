@@ -1,5 +1,5 @@
 "use client";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { ScrollHint } from "./common/ScrollHint";
 
@@ -24,14 +24,16 @@ export function FeatureCard({
   const toggleOpen = () => setIsOpen((prev) => !prev);
 
   // Geração de delay e duração aleatórios, memorizados por instância
-  const animationStyles = useMemo(() => {
-    const delay = (Math.random() * 2).toFixed(2); // de 0s a 2s
-    const duration = (3 + Math.random() * 3).toFixed(2); // de 3s a 6s
-    return {
-      animationDelay: `${delay}s`,
-      animationDuration: `${duration}s`,
-    };
-  }, []);
+  const [animationStyles, setAnimationStyles] = useState<React.CSSProperties | null>(null);
+
+useEffect(() => {
+  const delay = `${(Math.random() * 2).toFixed(2)}s`;
+  const duration = `${(3 + Math.random() * 3).toFixed(2)}s`;
+  setAnimationStyles({
+    animationDelay: delay,
+    animationDuration: duration,
+  });
+}, []);
 
   return (
     <div className="flex flex-col items-center justify-around px-4 py-8 min-w-fit h-auto gap-5 ">
@@ -49,7 +51,7 @@ export function FeatureCard({
           </button>
           <div
             className="absolute right-3 top-[-10px] flex flex-col items-center justify-center bg-lime-500 rounded-full w-20 h-20 rotate-15 animate-shakeAndScaleRotate dark:text-black "
-            style={animationStyles}
+            style={animationStyles ?? {}}
           >
             <span className="text-[12px] ">R$</span>
             <span className="text-2xl font-bold">{price}</span>
