@@ -16,4 +16,11 @@ export interface ItemCarrinho {
   produto: Produto;
   quantidade: number;
   observacoes?: string;
+  personalizado?: {
+    hamburguer: string;
+    acompanhamento: string;
+    bebida: string;
+    precoFinal: number;
+  };
+  uid?: string; // ID único para combos personalizados
 }

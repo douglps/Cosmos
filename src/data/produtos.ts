@@ -208,6 +208,13 @@ export const produtos: Produto[] = [
     descricao: "Água sem gás garrafa 500ml.",
     categoria: "bebidas",
   },
+  {
+    id: "agua_cg",
+    nome: "Água com gás",
+    preco: 5.0,
+    descricao: "Água com gás garrafa 500ml.",
+    categoria: "bebidas",
+  },
   // SOBREMESAS ******************************************************
   {
     id: "cookie",

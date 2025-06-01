@@ -1,3 +1,4 @@
+// /components/cardapio/SecaoCategoria.tsx
 import { Produto } from "@/types";
 import { CardProduto } from "./CardProduto";
 import { CombosCard } from "./CombosCard";

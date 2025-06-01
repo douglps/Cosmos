@@ -5,10 +5,10 @@ interface DrawerCarrinhoProps {
   aberto: boolean;
   onClose: () => void;
   itens: ItemCarrinho[];
-  onRemover: (id: string) => void;
+  onRemover: (id: string, uid?: string) => void;
   onLimpar: () => void;
   onAdicionar?: (id: string) => void;
-  onAlterarQuantidade: (id: string, quantidade: number) => void;
+  onAlterarQuantidade: (id: string, quantidade: number, uid?: string) => void;
 }
 
 export function DrawerCarrinho({
@@ -60,58 +60,57 @@ export function DrawerCarrinho({
             <p className="text-gray-600 dark:text-gray-400">Seu carrinho está vazio.</p>
           )}
 
-          {itens.map(({ produto, quantidade }) => (
-            <div
-              key={produto.id}
-              className="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-2"
-            >
-              <div>
-                <p className="font-semibold text-gray-900 dark:text-gray-100">{produto.nome}</p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  R$ {produto.preco.toFixed(2)} cada
-                </p>
-              </div>
+{itens.map((item) => (
+  <div
+    key={item.uid ?? item.produto.id}
+    className="flex flex-col gap-1 border-b border-gray-200 dark:border-gray-700 pb-2"
+  >
+    <div className="flex justify-between items-center">
+      <div>
+        <p className="font-semibold text-gray-900 dark:text-gray-100">{item.produto.nome}</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400">
+          R$ {item.produto.preco.toFixed(2)} cada
+        </p>
+      </div>
 
-              <div className="flex items-center gap-2">
-                {/* - */}
-                <button
-                  onClick={() => onAlterarQuantidade(produto.id, quantidade - 1)}
-                  className="px-2 py-1 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 rounded"
-                  aria-label={`Remover uma unidade de ${produto.nome}`}
-                >
-                  -
-                </button>
+      <div className="flex items-center gap-2">
+        <button
+          onClick={() => onAlterarQuantidade(item.produto.id, item.quantidade - 1, item.uid)}
+          className="px-2 py-1 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 rounded"
+        >
+          -
+        </button>
+        <span className="min-w-[24px] text-center font-medium text-gray-900 dark:text-gray-100">
+          {item.quantidade}
+        </span>
+        <button
+          onClick={() => onAlterarQuantidade(item.produto.id, item.quantidade + 1, item.uid)}
+          className="px-2 py-1 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 rounded"
+        >
+          +
+        </button>
+        <span className="font-semibold text-gray-900 dark:text-gray-100 ml-2">
+          R$ {(item.produto.preco * item.quantidade).toFixed(2)}
+        </span>
+        <button
+          onClick={() => onRemover(item.produto.id, item.uid)}
+          className="text-red-600 hover:text-red-800 ml-2"
+        >
+          ✕
+        </button>
+      </div>
+    </div>
 
-                {/* quantidade */}
-                <span className="min-w-[24px] text-center font-medium text-gray-900 dark:text-gray-100">
-                  {quantidade}
-                </span>
+    {item.personalizado && (
+      <ul className="text-xs text-gray-500 dark:text-gray-400 mt-1 list-disc list-inside">
+        <li>Hambúrguer: {item.personalizado.hamburguer}</li>
+        <li>Acompanhamento: {item.personalizado.acompanhamento}</li>
+        <li>Bebida: {item.personalizado.bebida}</li>
+      </ul>
+    )}
+  </div>
+))}
 
-                {/* + */}
-                <button
-                  onClick={() => onAlterarQuantidade(produto.id, quantidade + 1)}
-                  className="px-2 py-1 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 rounded"
-                  aria-label={`Adicionar uma unidade de ${produto.nome}`}
-                >
-                  +
-                </button>
-
-                {/* subtotal */}
-                <span className="font-semibold text-gray-900 dark:text-gray-100 ml-2">
-                  R$ {(produto.preco * quantidade).toFixed(2)}
-                </span>
-
-                {/* excluir */}
-                <button
-                  onClick={() => onRemover(produto.id)}
-                  className="text-red-600 hover:text-red-800 ml-2"
-                  aria-label={`Remover completamente ${produto.nome} do carrinho`}
-                >
-                  ✕
-                </button>
-              </div>
-            </div>
-          ))}
         </div>
 
         {/* Rodapé */}

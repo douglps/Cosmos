@@ -1,11 +1,11 @@
-// /components/cardapio/CardProduct.tsx
 "use client";
 
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { Produto } from "@/types";
 import { useCarrinho } from "@/hooks/useCarrinho";
-import { ComboModal } from "@/components/cardapio/ComboModal"; // crie este arquivo como indicado
+import { ComboModal } from "@/components/cardapio/ComboModal";
+import { produtos as allProducts } from "@/data/produtos"; // Importa todos os produtos para buscar nomes/preços
 
 type FeatureCardProps = {
   produto: Produto;
@@ -18,12 +18,21 @@ export function CombosCard({
   ctaText = "Ver mais",
   badgeLabel = "A partir de",
 }: FeatureCardProps) {
-  const { adicionarProduto } = useCarrinho();
+  const { adicionarProduto, adicionarItemPersonalizado, itens } = useCarrinho();
   const [isOpen, setIsOpen] = useState(false);
   const [isComboModalOpen, setComboModalOpen] = useState(false);
 
-  const quantidadeNoCarrinho =
-    useCarrinho().itens.find((item) => item.produto.id === produto.id)?.quantidade ?? 0;
+  // Calcula a quantidade do produto base (não personalizado) no carrinho
+  const quantidadeNoCarrinhoBase =
+    itens.find((item) => item.produto.id === produto.id && !item.uid)?.quantidade ?? 0;
+
+  // Calcula a quantidade total de *todas as versões* do combo (base + personalizadas)
+  const quantidadeTotalDoCombo = itens.reduce((total, item) => {
+    if (item.produto.id === produto.id) { // Verifica se é o mesmo produto base
+      return total + item.quantidade;
+    }
+    return total;
+  }, 0);
 
   const [animationStyles, setAnimationStyles] =
     useState<React.CSSProperties | null>(null);
@@ -39,16 +48,50 @@ export function CombosCard({
 
   const toggleOpen = () => setIsOpen((prev) => !prev);
 
-  const handleConfirmCombo = (selection: {
-    hamburguer: string;
-    acompanhamento: string;
-    bebida: string;
-  }) => {
-    console.log("Combo selecionado:", selection);
-    // futura lógica de cálculo/preço/identificação
-    adicionarProduto(produto); // Placeholder
+  // NOVO: Função para abrir o modal de personalização
+  const handleOpenComboModal = () => {
+    setComboModalOpen(true);
+  };
+
+  // NOVO: Função para fechar o modal de personalização
+  const handleCloseComboModal = () => {
     setComboModalOpen(false);
   };
+
+  // Função chamada pelo ComboModal ao confirmar a personalização
+  const handleConfirmCombo = (selection: {
+    hamburguerId: string; // Renomeado para Id
+    acompanhamentoId: string; // Renomeado para Id
+    bebidaId: string; // Renomeado para Id
+  }) => {
+    // Busca os *nomes* reais dos produtos para exibição no carrinho
+    const nomeHamburguer = allProducts.find(p => p.id === selection.hamburguerId)?.nome || selection.hamburguerId;
+    const nomeAcompanhamento = allProducts.find(p => p.id === selection.acompanhamentoId)?.nome || selection.acompanhamentoId;
+    const nomeBebida = allProducts.find(p => p.id === selection.bebidaId)?.nome || selection.bebidaId;
+
+    // Lógica para calcular o preço final do combo personalizado
+    // Você precisa ajustar esta lógica conforme seu modelo de negócios:
+    // Opção 1: Preço fixo do combo, as personalizações não alteram o preço.
+    // const precoFinalCalculado = produto.preco;
+
+    // Opção 2: O preço do combo é a soma dos preços dos itens selecionados.
+    const precoHamburguer = allProducts.find(p => p.id === selection.hamburguerId)?.preco || 0;
+    const precoAcompanhamento = allProducts.find(p => p.id === selection.acompanhamentoId)?.preco || 0;
+    const precoBebida = allProducts.find(p => p.id === selection.bebidaId)?.preco || 0;
+    const precoFinalCalculado = precoHamburguer + precoAcompanhamento + precoBebida;
+
+
+    // Chamar adicionarItemPersonalizado do CarrinhoContext
+    adicionarItemPersonalizado(produto, { // Passa o produto base do combo
+      hamburguer: nomeHamburguer,
+      acompanhamento: nomeAcompanhamento,
+      bebida: nomeBebida,
+      precoFinal: precoFinalCalculado, // Preço final calculado
+    });
+
+    handleCloseComboModal(); // Fecha o modal após adicionar ao carrinho
+  };
+
 
   return (
     <article className="flex flex-col items-center justify-center px-4 py-8 min-w-fit h-auto gap-5">
@@ -75,30 +118,40 @@ export function CombosCard({
         </div>
 
         <div className="relative w-full px-2 py-4 flex flex-col items-center justify-between gap-2">
-          {/* Adição ao carrinho */}
-          <div className="flex gap-3 justify-center items-center">
-            <button
-              onClick={() => adicionarProduto(produto)}
-              className="bg-amber-500 hover:bg-amber-600 text-white px-3 py-1 rounded text-sm"
-              aria-label={`Adicionar ${produto.nome} ao carrinho`}
-            >
-              Adicionar
-            </button>
-            {quantidadeNoCarrinho > 0 && (
-              <p className="text-sm text-amber-600">
-                Qtd: {quantidadeNoCarrinho}
-              </p>
-            )}
-          </div>
+          {/* Adição ao carrinho para produtos não-combo ou a versão base do combo */}
+          {produto.categoria !== "combos" && ( // Apenas mostra o botão "Adicionar" para não-combos
+            <div className="flex gap-3 justify-center items-center">
+              <button
+                onClick={() => adicionarProduto(produto)}
+                className="bg-amber-500 hover:bg-amber-600 text-white px-3 py-1 rounded text-sm"
+                aria-label={`Adicionar ${produto.nome} ao carrinho`}
+              >
+                Adicionar
+              </button>
+              {quantidadeNoCarrinhoBase > 0 && ( // Mostra a quantidade apenas para a versão base
+                <p className="text-sm text-amber-600">
+                  Qtd: {quantidadeNoCarrinhoBase}
+                </p>
+              )}
+            </div>
+          )}
 
           {/* Botão de personalização (apenas para combos) */}
           {produto.categoria === "combos" && (
-            <button
-              className="text-xs border border-amber-500 text-amber-600 px-3 py-1 rounded-full hover:bg-amber-50 transition"
-              onClick={() => setComboModalOpen(true)}
-            >
-              Personalizar Combo
-            </button>
+            <>
+              <button
+                className="bg-amber-500 hover:bg-amber-600 text-white px-3 py-1 rounded text-sm" // Estilo similar ao "Adicionar"
+                onClick={handleOpenComboModal} // Abre o modal de personalização
+              >
+                Personalizar Combo
+              </button>
+              {/* Quantidade total de todas as versões do combo */}
+              {quantidadeTotalDoCombo > 0 && (
+                <p className="text-sm text-amber-600">
+                  Qtd Total: {quantidadeTotalDoCombo}
+                </p>
+              )}
+            </>
           )}
 
           {/* Badge */}
@@ -144,15 +197,16 @@ export function CombosCard({
         </section>
       </div>
 
-      {/* Modal de Personalização */}
-      <ComboModal
-  isOpen={isComboModalOpen}
-  onClose={() => setComboModalOpen(false)}
-  onConfirm={handleConfirmCombo}
-  hamburguer={produto.nome}
-  basePrice={produto.preco}
-/>
-
+      {/* Modal de Personalização do Combo */}
+      {produto.categoria === "combos" && ( // Garante que o modal só aparece para combos
+        <ComboModal
+          isOpen={isComboModalOpen}
+          onClose={handleCloseComboModal}
+          onConfirm={handleConfirmCombo}
+          hamburguerId={"burger_mercurio"} // ATENÇÃO: Defina o ID do hambúrguer base do combo aqui
+          basePrice={produto.preco} // Preço base do combo
+        />
+      )}
     </article>
   );
 }
