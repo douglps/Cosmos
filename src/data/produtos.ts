@@ -1,27 +1,46 @@
 // data/produtos.ts
 import { Produto } from "@/types";
 
-import comboMercurio from "@/assets/images/cards/6.jpg"
-import comboCalisto from "@/assets/images/cards/combos/calistoCombo-removebg.png";
-import comboLua from "@/assets/images/cards/combos/luaCombo-removebg.png";
-import comboIo from "@/assets/images/cards/combos/ioCombo-removebg.png";
-import comboOberon from "@/assets/images/cards/combos/oberonCombo-removebg.png";
-import comboTetis from "@/assets/images/cards/combos/tetisCombo-removebg.png";
+
+import comboMercurio from "@/assets/images/cards/combos/mercCombo.png";
 import comboVenus from "@/assets/images/cards/combos/venusCombo-removebg.png";
+import comboTerra from "@/assets/images/cards/combos/terraCombo.png"
+import comboMarte from "@/assets/images/cards/combos/marteCombo.png"
+import comboSaturno from "@/assets/images/cards/combos/saturnoCombo.png"
+import comboUrano from "@/assets/images/cards/combos/uranoCombo.png"
 import comboNetuno from "@/assets/images/cards/combos/netunoCombo-removebg.png";
-// import mercurio from "@/assets/images/cards/burgers/mercurio-removebg.png";
-// import venus from "@/assets/images/cards/burgers/venus-removebg.png";
-// import terra from "@/assets/images/cards/burgers/terra-removebg.png";
-// import marte from "@/assets/images/cards/burgers/marte-removebg.png";
-// import saturno from "@/assets/images/cards/burgers/saturno-removebg.png";
-// import urano from "@/assets/images/cards/burgers/urano-removebg.png";
-// import netuno from "@/assets/images/cards/burgers/netuno-removebg.png";
-// import plutao from "@/assets/images/cards/burgers/plutao-removebg.png";
-// import lua from "@/assets/images/cards/burgers/lua-removebg.png";
-// import oberon from "@/assets/images/cards/burgers/oberon-removebg.png";
-// import io from "@/assets/images/cards/burgers/io-removebg.png";
-// import calisto from "@/assets/images/cards/burgers/calisto-removebg.png";
-// import tetis from "@/assets/images/cards/burgers/tetis-removebg.png";
+import comboPlutao from "@/assets/images/cards/combos/plutaoCombo.png";
+import comboLua from "@/assets/images/cards/combos/luaCombo-removebg.png";
+import comboOberon from "@/assets/images/cards/combos/oberonCombo-removebg.png";
+import comboIo from "@/assets/images/cards/combos/ioCombo-removebg.png";
+import comboCalisto from "@/assets/images/cards/combos/calistoCombo-removebg.png";
+import comboTetis from "@/assets/images/cards/combos/tetisCombo.png";
+import mercurio from "@/assets/images/cards/burgers/mercurio.png";
+import venus from "@/assets/images/cards/burgers/venus.png";
+import terra from "@/assets/images/cards/burgers/terra.png";
+import marte from "@/assets/images/cards/burgers/marte.png";
+import saturno from "@/assets/images/cards/burgers/saturno.png";
+import urano from "@/assets/images/cards/burgers/urano.png";
+import netuno from "@/assets/images/cards/burgers/netuno.png";
+import plutao from "@/assets/images/cards/burgers/plutao.png";
+import lua from "@/assets/images/cards/burgers/lua.png";
+import oberon from "@/assets/images/cards/burgers/oberon.png";
+import io from "@/assets/images/cards/burgers/io.png";
+import calisto from "@/assets/images/cards/burgers/calisto.png";
+import tetis from "@/assets/images/cards/burgers/tetis.png";
+import omuamua from "@/assets/images/cards/auxiliar/omuamuaManj.png";
+import omuamuaGr from "@/assets/images/cards/auxiliar/omuamuaManjGr.png";
+import cookie from "@/assets/images/cards/auxiliar/cookie.png";
+import aguaSemGasLata from "@/assets/images/cards/auxiliar/aguaSg.png";
+import aguaComGasLata from "@/assets/images/cards/auxiliar/aguaCg.png";
+import cocaLata from "@/assets/images/cards/auxiliar/coca.png";
+import cocaZeroLata from "@/assets/images/cards/auxiliar/cocaZero.png";
+import fantaLaranjaLata from "@/assets/images/cards/auxiliar/fantalar.png";
+import spriteLata from "@/assets/images/cards/auxiliar/sprite.png";
+import kuatLata from "@/assets/images/cards/auxiliar/kuat.png";
+import heinekenLata from "@/assets/images/cards/auxiliar/heineken.png";
+import belaVistaLata from "@/assets/images/cards/auxiliar/belaVista.png";
+
 
 
 export const produtos: Produto[] = [
@@ -36,7 +55,7 @@ export const produtos: Produto[] = [
       "Burger Mercúrio - Blend de carnes bovina, queijo cheddar, molho Libra e pão tipo brioche.",
       "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
     ],
-    image: comboMercurio, // importante definir a imagem aqui!
+    image: comboMercurio,
   },
   {
     id: "combo_venus",
@@ -60,7 +79,7 @@ export const produtos: Produto[] = [
       "Burger Terra - Carne de frango, queijo muçarela, tomate, rúcula, cebola caramelizada, queijo gorgonzola, molho Libra, pão de cereais",
       "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
     ],
-    image: comboMercurio,
+    image: comboTerra,
   },
   {
     id: "combo_marte",
@@ -72,7 +91,7 @@ export const produtos: Produto[] = [
       "Burger Marte - Carne de frango, molho Sagitário, cogumelos picantes, bacon, queijo muçarela, cebola roxa, rúcula e pão australiano.",
       "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
     ],
-    image: comboMercurio,
+    image: comboMarte,
   },
   {
     id: "combo_saturno",
@@ -84,7 +103,7 @@ export const produtos: Produto[] = [
       "Burger Saturno - Carne de costela, queijo cheddar, tomate, cebola roxa, bacon, picles, molho Gêmeos e pão australiano.",
       "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
     ],
-    image: comboMercurio,
+    image: comboSaturno,
   },
   {
     id: "combo_urano",
@@ -96,7 +115,7 @@ export const produtos: Produto[] = [
       "Burger Urano - Carne de costela, queijo muçarela, bacon, tomate, alface americana, picles, cebola, molho Virgem e pão tipo brioche.",
       "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
     ],
-    image: comboMercurio,
+    image: comboUrano,
   },
   {
     id: "combo_netuno",
@@ -109,6 +128,18 @@ export const produtos: Produto[] = [
       "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
     ],
     image: comboNetuno,
+  },
+  {
+    id: "combo_plutao",
+    nome: "Combo Plutão",
+    preco: 17.9,
+    descricao: "O Senhor do Submundo",
+    categoria: "combos",
+     descriptionItems: [
+      "Burger Plutão - Carne de costela, cebola caramelizada, queijo cheddar e pão australiano.",
+      "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
+    ],
+    image: comboPlutao,
   },
 // COMBOS VEGANOS
 {
@@ -175,109 +206,123 @@ export const produtos: Produto[] = [
   // HAMBÚRGUERES ****************************************************
   {
     id: "burger_mercurio",
-    nome: "Burger Mercúrio",
+    nome: "Mercúrio",
     preco: 17.9,
     descricao:
       "Blend de carnes bovina, queijo cheddar, molho Libra e pão tipo brioche.",
     categoria: "hamburgueres",
+    image: mercurio,
   },
   {
     id: "burger_venus",
-    nome: "Burger Vênus",
+    nome: "Vênus",
     preco: 25.9,
     descricao:
       "Carne de entrecot, queijo muçarela, tomate, alface americana, molho Gêmeos e pão black.",
     categoria: "hamburgueres",
+    image: venus,
   },
   {
     id: "burger_terra",
-    nome: "Burger Terra",
+    nome: "Terra",
     preco: 30.9,
     descricao:
       "Carne de frango, queijo muçarela, tomate, rúcula, cebola caramelizada, queijo gorgonzola, molho Libra, pão de cereais",
     categoria: "hamburgueres",
+    image: terra,
   },
   {
     id: "burger_marte",
-    nome: "Burger Marte",
+    nome: "Marte",
     preco: 30.9,
     descricao:
       "Carne de frango, molho Sagitário, cogumelos picantes, bacon, queijo muçarela, cebola roxa, rúcula e pão australiano.",
     categoria: "hamburgueres",
+    image: marte,
   },
   {
     id: "burger_saturno",
-    nome: "Burger Saturno",
+    nome: "Saturno",
     preco: 27.9,
     descricao:
       "Carne de costela, queijo cheddar, tomate, cebola roxa, bacon, picles, molho Gêmeos e pão australiano.",
     categoria: "hamburgueres",
+    image: saturno,
   },
   {
     id: "burger_urano",
-    nome: "Burger Urano",
+    nome: "Urano",
     preco: 24.9,
     descricao:
       "Carne de costela, queijo muçarela, bacon, tomate, alface americana, picles, cebola, molho Virgem e pão tipo brioche.",
     categoria: "hamburgueres",
+    image: urano,
   },
   {
     id: "burger_netuno",
-    nome: "Burger Netuno",
+    nome: "Netuno",
     preco: 25.9,
     descricao:
       "Carne de costela com chimichurri, queijo muçarela com páprica, cebola roxa, tomate, cenoura em folha, alface americana, molho Touro e pão tipo brioche.",
     categoria: "hamburgueres",
+    image: netuno,
   },
   {
     id: "burger_plutao",
-    nome: "Burger Plutão",
+    nome: "Plutão",
     preco: 25.9,
     descricao:
       "Carne de costela, cebola caramelizada, queijo cheddar e pão australiano.",
     categoria: "hamburgueres",
+    image: plutao,
+
   },
 
   // VEGETARIANOS *******************************************************
   {
     id: "veg_lua",
-    nome: "Burger Veg Lua (Terra)",
+    nome: "Veg Lua (Terra)",
     preco: 27.9,
     descricao:
       "Burger de grão de bico, queijo muçarela, cogumelos com gorgonzola, repolho roxo, cenoura em folha, molho Sagitário e pão black. (contém ovos, mel e derivados de leite)",
     categoria: "hamburgueres",
+    image: lua,
   },
   {
     id: "veg_oberon",
-    nome: "Burger Veg Oberon (Urano)",
+    nome: "Veg Oberon (Urano)",
     preco: 26.9,
     descricao:
       "Burger de grão de bico, pimentão defumado, cogumelos com shoyu, tomate, cenoura em folha, broto, molho Touro e pão brioche. (contém ovos e derivados de leite)",
     categoria: "hamburgueres",
+    image: oberon,
   },
   {
     id: "veg_io",
-    nome: "Burger Veg Io (Júpiter)",
+    nome: "Veg Io (Júpiter)",
     preco: 24.9,
     descricao:
       "Burger de grão de bico, queijo cheddar, tomate, alface americana, maionese e pão tipo brioche. (contém ovos e derivados de leite)",
     categoria: "hamburgueres",
+    image: io,
   },
   {
     id: "veg_calisto",
-    nome: "Burger Veg Calisto (Júpiter)",
+    nome: "Veg Calisto (Júpiter)",
     preco: 19.9,
     descricao:
       "Burger de grão de bico, tomate, alface americana, maionese vegana e pão tipo brioche. (contém ovos)",
-    categoria: "hamburgueres",
+    categoria: "hamburgueres", 
+    image: calisto,
   },
   {
     id: "veg_tetis",
-    nome: "Burger Veg Tétis (Saturno)",
+    nome: "Veg Tétis (Saturno)",
     preco: 19.9,
     descricao:
       "Burger de grão de bico, rúcula, tomate, cebola roxa, picles, molho especial vegano e pão black. (contém ovos)",
     categoria: "hamburgueres",
+    image: tetis,
   },
 
   // ACOMPANHAMENTOS ************************************************
@@ -288,6 +333,7 @@ export const produtos: Produto[] = [
     descricao:
       "Batatas crinkle, perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada. Porção média aprox. 110g.",
     categoria: "acompanhamentos",
+    image: omuamua,
   },
   {
     id: "omuamua_gr",
@@ -296,6 +342,7 @@ export const produtos: Produto[] = [
     descricao:
       "Batatas crinkle, perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada. Porção grande aprox. 170g.",
     categoria: "acompanhamentos",
+    image: omuamuaGr,
   },
   // BEBIDAS *********************************************************
   {
@@ -304,6 +351,7 @@ export const produtos: Produto[] = [
     preco: 7.0,
     descricao: "Coca cola lata 350ml.",
     categoria: "bebidas",
+    image: cocaLata,
   },
   {
     id: "coca_zero",
@@ -311,6 +359,7 @@ export const produtos: Produto[] = [
     preco: 7.0,
     descricao: "Coca cola zero lata 350ml.",
     categoria: "bebidas",
+    image: cocaZeroLata,
   },
   {
     id: "fanta_lar",
@@ -318,6 +367,7 @@ export const produtos: Produto[] = [
     preco: 7.0,
     descricao: "Fanta laranja lata 350ml.",
     categoria: "bebidas",
+    image: fantaLaranjaLata,
   },
   {
     id: "sprite",
@@ -325,6 +375,7 @@ export const produtos: Produto[] = [
     preco: 7.0,
     descricao: "Sprite lata 350ml.",
     categoria: "bebidas",
+    image: spriteLata,
   },
   {
     id: "kuat",
@@ -332,6 +383,7 @@ export const produtos: Produto[] = [
     preco: 7.0,
     descricao: "Kuat lata 350ml.",
     categoria: "bebidas",
+    image: kuatLata,
   },
   {
     id: "heineken",
@@ -339,6 +391,7 @@ export const produtos: Produto[] = [
     preco: 11.0,
     descricao: "Cerveja Heineken lata 473ml.",
     categoria: "bebidas",
+    image: heinekenLata,
   },
   {
     id: "bela_vista",
@@ -346,6 +399,7 @@ export const produtos: Produto[] = [
     preco: 10.0,
     descricao: "Cerveja Bela Vista lata 473ml.",
     categoria: "bebidas",
+    image: belaVistaLata,
   },
   {
     id: "agua_sg",
@@ -353,6 +407,7 @@ export const produtos: Produto[] = [
     preco: 5.0,
     descricao: "Água sem gás garrafa 500ml.",
     categoria: "bebidas",
+    image: aguaSemGasLata,
   },
   {
     id: "agua_cg",
@@ -360,6 +415,7 @@ export const produtos: Produto[] = [
     preco: 5.0,
     descricao: "Água com gás garrafa 500ml.",
     categoria: "bebidas",
+    image: aguaComGasLata,
   },
   // SOBREMESAS ******************************************************
   {
@@ -369,5 +425,6 @@ export const produtos: Produto[] = [
     descricao:
       "Cookie Meteorito nas versões tradicional ou chocolate, com fragmentos de chocolate e dolçura vindos do outro lado do universo.",
     categoria: "sobremesas",
+    image: cookie,
   },
 ];

@@ -106,7 +106,7 @@ export function CombosCard({
   };
 
   return (
-    <article className="flex flex-col items-center justify-center px-4 py-8 min-w-fit h-auto gap-5">
+    <article className="flex flex-col items-start justify-items-start px-4 py-8 min-w-fit h-auto gap-5">
       <div className="relative flex flex-col justify-center items-center min-h-fit w-full min-w-[280px] bg-white dark:bg-neutral-900 rounded-md shadow-md shadow-stone-700 overflow-hidden transition-transform duration-300 hover:scale-[1.05]">
         {/* Cabeçalho */}
         <header className="w-full text-center bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-700 p-3">
