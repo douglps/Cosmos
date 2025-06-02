@@ -1,11 +1,13 @@
-// src/types/index.ts (ou onde sua interface ItemCarrinho estiver definida)
+// src/types/index.ts
+
+import { StaticImageData } from "next/image";
 
 export interface Produto {
   id: string;
   nome: string;
   preco: number;
   descricao?: string;
-  image?: string;
+  image?: string | StaticImageData;
   categoria: 'hamburgueres' | 'acompanhamentos' | 'bebidas' | 'combos' | 'sobremesas';
   descriptionItems?: string[];
   // Adicione outras propriedades relevantes do seu produto aqui

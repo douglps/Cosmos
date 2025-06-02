@@ -1,8 +1,28 @@
 // data/produtos.ts
 import { Produto } from "@/types";
-import { StaticImageData } from "next/image";
 
-import comboMercurio from "@/assets/images/cards/5.jpg";
+import comboMercurio from "@/assets/images/cards/6.jpg"
+import comboCalisto from "@/assets/images/cards/combos/calistoCombo-removebg.png";
+import comboLua from "@/assets/images/cards/combos/luaCombo-removebg.png";
+import comboIo from "@/assets/images/cards/combos/ioCombo-removebg.png";
+import comboOberon from "@/assets/images/cards/combos/oberonCombo-removebg.png";
+import comboTetis from "@/assets/images/cards/combos/tetisCombo-removebg.png";
+import comboVenus from "@/assets/images/cards/combos/venusCombo-removebg.png";
+import comboNetuno from "@/assets/images/cards/combos/netunoCombo-removebg.png";
+// import mercurio from "@/assets/images/cards/burgers/mercurio-removebg.png";
+// import venus from "@/assets/images/cards/burgers/venus-removebg.png";
+// import terra from "@/assets/images/cards/burgers/terra-removebg.png";
+// import marte from "@/assets/images/cards/burgers/marte-removebg.png";
+// import saturno from "@/assets/images/cards/burgers/saturno-removebg.png";
+// import urano from "@/assets/images/cards/burgers/urano-removebg.png";
+// import netuno from "@/assets/images/cards/burgers/netuno-removebg.png";
+// import plutao from "@/assets/images/cards/burgers/plutao-removebg.png";
+// import lua from "@/assets/images/cards/burgers/lua-removebg.png";
+// import oberon from "@/assets/images/cards/burgers/oberon-removebg.png";
+// import io from "@/assets/images/cards/burgers/io-removebg.png";
+// import calisto from "@/assets/images/cards/burgers/calisto-removebg.png";
+// import tetis from "@/assets/images/cards/burgers/tetis-removebg.png";
+
 
 export const produtos: Produto[] = [
   // COMBOS **********************************************************
@@ -10,28 +30,146 @@ export const produtos: Produto[] = [
     id: "combo_mercurio",
     nome: "Combo Mercúrio",
     preco: 32.90,
-    descricao: "teste 1 2 3",
+    descricao: "O Mensageiro dos Deuses",
     categoria: "combos",
     descriptionItems: [
-      "1 Hambúrguer artesanal",
-      "1 Porção de batata frita",
-      "1 Refrigerante 350ml"
+      "Burger Mercúrio - Blend de carnes bovina, queijo cheddar, molho Libra e pão tipo brioche.",
+      "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
     ],
     image: comboMercurio, // importante definir a imagem aqui!
   },
   {
-    id: "combo_2",
-    nome: "Combo 2",
+    id: "combo_venus",
+    nome: "Combo Vênus",
     preco: 17.9,
-    descricao: "",
+    descricao: "O Encanto Celestial",
     categoria: "combos",
+    descriptionItems: [
+      "Burger Vênus - Carne de entrecot, queijo muçarela, tomate, alface americana, molho Gêmeos e pão black.",
+      "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
+    ],
+    image: comboVenus,
   },
   {
-    id: "combo_3",
-    nome: "Combo 3",
+    id: "combo_terra",
+    nome: "Combo Terra",
     preco: 17.9,
-    descricao: "",
+    descricao: "Abundância de Sensações",
     categoria: "combos",
+     descriptionItems: [
+      "Burger Terra - Carne de frango, queijo muçarela, tomate, rúcula, cebola caramelizada, queijo gorgonzola, molho Libra, pão de cereais",
+      "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
+    ],
+    image: comboMercurio,
+  },
+  {
+    id: "combo_marte",
+    nome: "Combo Marte",
+    preco: 17.9,
+    descricao: "O Guerreiro Saboroso",
+    categoria: "combos",
+     descriptionItems: [
+      "Burger Marte - Carne de frango, molho Sagitário, cogumelos picantes, bacon, queijo muçarela, cebola roxa, rúcula e pão australiano.",
+      "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
+    ],
+    image: comboMercurio,
+  },
+  {
+    id: "combo_saturno",
+    nome: "Combo Saturno",
+    preco: 17.9,
+    descricao: "O Titã Inesquecível",
+    categoria: "combos",
+     descriptionItems: [
+      "Burger Saturno - Carne de costela, queijo cheddar, tomate, cebola roxa, bacon, picles, molho Gêmeos e pão australiano.",
+      "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
+    ],
+    image: comboMercurio,
+  },
+  {
+    id: "combo_urano",
+    nome: "Combo Urano",
+    preco: 17.9,
+    descricao: "Combinação Primordial",
+    categoria: "combos",
+     descriptionItems: [
+      "Burger Urano - Carne de costela, queijo muçarela, bacon, tomate, alface americana, picles, cebola, molho Virgem e pão tipo brioche.",
+      "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
+    ],
+    image: comboMercurio,
+  },
+  {
+    id: "combo_netuno",
+    nome: "Combo Netuno",
+    preco: 17.9,
+    descricao: "Estiloso e Soberano",
+    categoria: "combos",
+     descriptionItems: [
+      "Burger Netuno - Carne de costela com chimichurri, queijo muçarela com páprica, cebola roxa, tomate, cenoura em folha, alface americana, molho Touro e pão tipo brioche.",
+      "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
+    ],
+    image: comboNetuno,
+  },
+// COMBOS VEGANOS
+{
+    id: "combo_lua",
+    nome: "Combo Veg Lua",
+    preco: 17.9,
+    descricao: "Delícia Dioturna",
+    categoria: "combos",
+     descriptionItems: [
+      "Burger Lua - Burger de grão de bico, queijo muçarela, cogumelos com gorgonzola, repolho roxo, cenoura em folha, molho Sagitário e pão black. (contém ovos, mel e derivados de leite)",
+      "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
+    ],
+    image: comboLua,
+  },
+  {
+    id: "combo_oberon",
+    nome: "Combo Veg Oberon",
+    preco: 17.9,
+    descricao: "Encantador de Paladar",
+    categoria: "combos",
+     descriptionItems: [
+      "Burger Oberon - Burger de grão de bico, pimentão defumado, cogumelos com shoyu, tomate, cenoura em folha, broto, molho Touro e pão brioche. (contém ovos e derivados de leite)",
+      "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
+    ],
+    image: comboOberon,
+  },
+  {
+    id: "combo_io",
+    nome: "Combo Veg Io",
+    preco: 17.9,
+    descricao: "Amante do Sabor",
+    categoria: "combos",
+     descriptionItems: [
+      "Burger Io - Burger de grão de bico, queijo cheddar, tomate, alface americana, maionese e pão tipo brioche. (contém ovos e derivados de leite)",
+      "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
+    ],
+    image: comboIo,
+  },
+  {
+    id: "combo_calisto",
+    nome: "Combo Veg Calisto",
+    preco: 17.9,
+    descricao: "Essência Selvagem",
+    categoria: "combos",
+     descriptionItems: [
+      "Burger Calisto - Burger de grão de bico, tomate, alface americana, maionese vegana e pão tipo brioche. (contém ovos)",
+      "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
+    ],
+    image: comboCalisto,
+  },
+  {
+    id: "combo_tetis",
+    nome: "Combo Veg Tétis",
+    preco: 17.9,
+    descricao: "Complexidade Profunda",
+    categoria: "combos",
+     descriptionItems: [
+      "Burger Tétis - Burger de grão de bico, rúcula, tomate, cebola roxa, picles, molho especial vegano e pão black. (contém ovos)",
+      "Batatas Omuamua - Perfeitamente crocantes e douradas, temperadas com sal do himalaia e um toque de páprica defumada.",
+    ],
+    image: comboTetis,
   },
 
   // HAMBÚRGUERES ****************************************************
@@ -89,6 +227,14 @@ export const produtos: Produto[] = [
     preco: 25.9,
     descricao:
       "Carne de costela com chimichurri, queijo muçarela com páprica, cebola roxa, tomate, cenoura em folha, alface americana, molho Touro e pão tipo brioche.",
+    categoria: "hamburgueres",
+  },
+  {
+    id: "burger_plutao",
+    nome: "Burger Plutão",
+    preco: 25.9,
+    descricao:
+      "Carne de costela, cebola caramelizada, queijo cheddar e pão australiano.",
     categoria: "hamburgueres",
   },
 

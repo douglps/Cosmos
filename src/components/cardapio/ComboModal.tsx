@@ -1,3 +1,4 @@
+// /components/cardapio/ComboModal.tsx
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -117,7 +118,7 @@ export const ComboModal: React.FC<ComboModalProps> = ({
       <div className="bg-white dark:bg-neutral-900 rounded-lg shadow-2xl w-full max-w-md mx-auto my-auto flex flex-col max-h-[90dvh]">
         {/* Cabeçalho */}
         <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
-          <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">Personalize seu Combo</h2>
+          <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200">Monte seu Combo</h2>
           <button onClick={onClose} className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 text-2xl font-light">
             ×
           </button>
@@ -278,7 +279,7 @@ export const ComboModal: React.FC<ComboModalProps> = ({
                 : 'bg-gray-300 text-gray-500 cursor-not-allowed'
               }`}
           >
-            Confirmar Pedido
+            Adicionar ao carrinho
           </button>
         </div>
       </div>

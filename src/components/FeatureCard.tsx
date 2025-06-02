@@ -1,3 +1,4 @@
+// /components/FeatureCard.tsx
 "use client";
 import { useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";

@@ -65,13 +65,13 @@ export default function Cardapio() {
           <input
             type="text"
             placeholder="Buscar produto..."
-            className="border rounded-3xl px-3 py-1 w-full max-w-[180px] bg-slate-100 focus:outline-stone-400"
+            className="border rounded-3xl px-3 py-1 w-full max-w-[280px] bg-slate-100 focus:outline-stone-400 text-gray-600"
             value={busca}
             onChange={(e) => setBusca(e.target.value)}
             aria-label="Buscar produto"
           />
         </div>
-        <ul className="flex flex-row justify-around gap-1 ">
+        <ul className="flex flex-row justify-around gap-1">
           {categorias.map((cat) => (
             <MenuCardapio
               key={cat.key}
